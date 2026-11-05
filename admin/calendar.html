@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario | VisitHub</title>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-calendar.css">
+</head>
+
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <a class="admin-brand" href="dashboard.html">
+      Visit<span>Hub</span>
+      <small>ADMINISTRACIÓN</small>
+    </a>
+
+    <nav class="admin-nav">
+      <a href="dashboard.html">
+        <span>▦</span> Dashboard
+      </a>
+
+      <a href="visits.html">
+        <span>▤</span> Citas
+      </a>
+
+      <a class="active" href="calendar.html">
+        <span>▦</span> Calendario
+      </a>
+
+      <a href="users.html">
+        <span>♙</span> Usuarios
+      </a>
+
+      <a href="settings.html">
+        <span>⚙</span> Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span id="admin-name">Administrador</span>
+
+      <button id="logout-button" class="button button-ghost button-full">
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <header class="admin-topbar">
+      <div>
+        <span class="eyebrow">GESTIÓN DE CITAS</span>
+        <h1>Calendario</h1>
+        <p>Consulta las citas y organiza las próximas visitas.</p>
+      </div>
+    </header>
+
+    <section class="calendar-toolbar">
+      <div class="calendar-month-navigation">
+        <button id="previous-month" class="calendar-nav-button"
+          aria-label="Mes anterior">‹</button>
+
+        <h2 id="calendar-month">Cargando...</h2>
+
+        <button id="next-month" class="calendar-nav-button"
+          aria-label="Mes siguiente">›</button>
+      </div>
+
+      <button id="today-button" class="button button-secondary">
+        Hoy
+      </button>
+    </section>
+
+    <section class="calendar-legend">
+      <span><i class="legend-dot pending"></i> Pendiente</span>
+      <span><i class="legend-dot approved"></i> Aprobada</span>
+    </section>
+
+    <section class="admin-panel calendar-panel">
+      <div class="calendar-weekdays">
+        <span>Lun</span>
+        <span>Mar</span>
+        <span>Mié</span>
+        <span>Jue</span>
+        <span>Vie</span>
+        <span>Sáb</span>
+        <span>Dom</span>
+      </div>
+
+      <div id="calendar-grid" class="calendar-grid">
+        <div class="calendar-loading">Cargando calendario...</div>
+      </div>
+    </section>
+
+    <p id="calendar-message" class="calendar-message"></p>
+
+  </main>
+
+  <dialog id="calendar-dialog" class="calendar-dialog">
+    <div class="dialog-header">
+      <div>
+        <span class="eyebrow">DETALLES DE LA VISITA</span>
+        <h2 id="dialog-title">Cita</h2>
+      </div>
+
+      <button id="close-dialog" class="dialog-close"
+        aria-label="Cerrar">×</button>
+    </div>
+
+    <div class="dialog-content">
+      <div class="dialog-detail">
+        <span>Estado</span>
+        <strong id="dialog-status">—</strong>
+      </div>
+
+      <div class="dialog-detail">
+        <span>Usuario</span>
+        <strong id="dialog-user">—</strong>
+      </div>
+
+      <div class="dialog-detail">
+        <span>Categoría</span>
+        <strong id="dialog-category">—</strong>
+      </div>
+
+      <div class="dialog-detail">
+        <span>Fecha</span>
+        <strong id="dialog-date">—</strong>
+      </div>
+
+      <div class="dialog-detail">
+        <span>Horario</span>
+        <strong id="dialog-time">—</strong>
+      </div>
+
+      <div class="dialog-detail full">
+        <span>Motivo de la visita</span>
+        <p id="dialog-reason">—</p>
+      </div>
+
+      <div class="dialog-detail full">
+        <span>Respuesta del administrador</span>
+        <p id="dialog-response">Sin respuesta.</p>
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+      <a href="visits.html" class="button button-secondary">
+        Gestionar citas
+      </a>
+    </div>
+  </dialog>
+
+  <script type="module" src="../js/admin/calendar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.detail-header h1 {
+  margin: 10px 0 5px;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  letter-spacing: -.055em;
+}
+
+.detail-header p {
+  margin: 5px 0 0;
+}
+
+.detail-back {
+  display: block;
+  width: fit-content;
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+.status-badge {
+  padding: 9px 13px;
+  border-radius: 10px;
+  background: #fff3dc;
+  color: #805719;
+  font-size: .82rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.status-badge.approved {
+  background: #e4f2fc;
+  color: #285e83;
+}
+
+.status-badge.rejected {
+  background: #fde8e8;
+  color: #a33d3d;
+}
+
+.status-badge.cancelled {
+  background: #edf0f4;
+  color: #687789;
+}
+
+.visit-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  align-items: start;
+  gap: 22px;
+}
+
+.visit-detail-main,
+.visit-detail-side {
+  display: grid;
+  gap: 20px;
+  min-width: 0;
+}
+
+.visit-detail-layout .admin-panel {
+  margin-top: 0;
+}
+
+.detail-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+}
+
+.detail-section-heading h2,
+.visit-detail-side h2 {
+  margin: 5px 0 0;
+  font-size: 1.15rem;
+}
+
+.detail-section-heading p,
+.danger-panel p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 18px;
+}
+
+.detail-field {
+  min-width: 0;
+}
+
+.detail-field span,
+.summary-item span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.detail-field strong,
+.summary-item strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: .92rem;
+}
+
+.detail-field p {
+  margin: 0;
+  color: var(--text);
+  font-size: .91rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.detail-field.full {
+  grid-column: 1 / -1;
+}
+
+.detail-id {
+  font-size: .78rem !important;
+  font-weight: 550;
+}
+
+.detail-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.detail-textarea,
+.detail-input {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  outline: none;
+  background: #f1f7fd;
+  color: var(--text);
+  font: inherit;
+  font-size: .9rem;
+}
+
+.detail-textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.detail-textarea:focus,
+.detail-input:focus {
+  border-color: var(--primary-dark);
+}
+
+.scheduled-fields {
+  margin-top: 25px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.scheduled-fields h3 {
+  margin: 0 0 17px;
+  font-size: .98rem;
+}
+
+.schedule-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.detail-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+
+.action-message {
+  min-height: 18px;
+  margin: 12px 0 0;
+  font-size: .85rem;
+}
+
+.action-message.error {
+  color: var(--danger);
+}
+
+.action-message.success {
+  color: #36845b;
+}
+
+.summary-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #e8f0f8;
+}
+
+.summary-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.danger-panel {
+  border-color: #f0dada;
+}
+
+.danger-panel h2 {
+  margin-bottom: 8px;
+}
+
+.danger-panel .button {
+  margin-top: 18px;
+}
+
+.detail-error {
+  padding: 18px;
+  border: 1px solid #f0dada;
+  border-radius: 13px;
+  background: #fff3f3;
+  color: #a33d3d;
+  font-size: .9rem;
+}
+
+@media (max-width: 1000px) {
+  .visit-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .visit-detail-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .detail-grid,
+  .schedule-inputs,
+  .visit-detail-side {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-field.full {
+    grid-column: auto;
+  }
+
+  .detail-actions {
+    flex-direction: column-reverse;
+  }
+
+  .detail-actions .button {
+    width: 100%;
+  }
+}

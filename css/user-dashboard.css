@@ -1,0 +1,275 @@
+
+/* ========================================
+   VISITHUB - DASHBOARD DE USUARIO
+======================================== */
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    min-width: 0;
+    padding: 23px;
+    border: 1px solid #e0eaf5;
+    border-radius: 16px;
+    background: #f5f8fc;
+    box-shadow: 0 4px 14px rgba(90, 125, 165, .04);
+}
+
+.stat-label {
+    display: block;
+    margin-bottom: 14px;
+    color: #8193a8;
+    font-size: .84rem;
+    font-weight: 600;
+}
+
+.stat-card strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #405875;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stat-description {
+    color: #9aa9b9;
+    font-size: .76rem;
+}
+
+.pending-stat {
+    border-top: 3px solid #a8c7e7;
+}
+
+.approved-stat {
+    border-top: 3px solid #a7d3c2;
+}
+
+.rejected-stat {
+    border-top: 3px solid #d7b7c5;
+}
+
+.total-stat {
+    border-top: 3px solid #c0c9e3;
+}
+
+/* PANELES */
+
+.dashboard-content {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 22px;
+}
+
+.dashboard-panel {
+    min-width: 0;
+    padding: 25px;
+    border: 1px solid #e0eaf5;
+    border-radius: 17px;
+    background: #f5f8fc;
+    box-shadow: 0 4px 14px rgba(90, 125, 165, .04);
+}
+
+.panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.panel-heading h2 {
+    margin: 0 0 6px;
+    color: #40536b;
+    font-size: 1.08rem;
+}
+
+.panel-heading p {
+    margin: 0;
+    color: #91a0b2;
+    font-size: .82rem;
+}
+
+.panel-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
+    border-radius: 12px;
+    background: #e4effa;
+    color: #7399bf;
+    font-size: 1.1rem;
+}
+
+.panel-link {
+    color: #779bc1;
+    text-decoration: none;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+.panel-link:hover {
+    color: #4e7ba8;
+}
+
+/* PRÓXIMA VISITA */
+
+.next-visit-content {
+    min-height: 135px;
+}
+
+.next-visit-card {
+    padding: 19px;
+    border: 1px solid #dce9f5;
+    border-radius: 13px;
+    background: #edf4fb;
+}
+
+.next-visit-card h3 {
+    margin: 0 0 9px;
+    color: #405875;
+    font-size: 1rem;
+}
+
+.next-visit-card p {
+    margin: 6px 0;
+    color: #8295aa;
+    font-size: .84rem;
+}
+
+.next-visit-date {
+    color: #668eb7 !important;
+    font-weight: 600;
+}
+
+.next-visit-link {
+    display: inline-block;
+    margin-top: 13px;
+    color: #668eb7;
+    font-size: .82rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* LISTADO RECIENTE */
+
+.recent-visit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.recent-visit:first-child {
+    padding-top: 0;
+}
+
+.recent-visit:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.recent-visit-info {
+    min-width: 0;
+}
+
+.recent-visit-info h3 {
+    overflow: hidden;
+    margin: 0 0 6px;
+    color: #50657e;
+    font-size: .88rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.recent-visit-info p {
+    margin: 0;
+    color: #96a5b6;
+    font-size: .76rem;
+}
+
+/* ESTADOS */
+
+.visit-status {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: .7rem;
+    font-weight: 700;
+}
+
+.status-pending {
+    background: #f7efd9;
+    color: #a98a48;
+}
+
+.status-approved {
+    background: #e0f1e9;
+    color: #5c997d;
+}
+
+.status-rejected {
+    background: #f4e5e9;
+    color: #ae7181;
+}
+
+.status-cancelled {
+    background: #e8edf3;
+    color: #8494a6;
+}
+
+/* MENSAJES */
+
+.loading-text,
+.empty-text {
+    padding: 25px 10px;
+    color: #98a8b9;
+    font-size: .85rem;
+    text-align: center;
+}
+
+#dashboard-message {
+    margin-top: 18px;
+    color: #bd7883;
+    font-size: .85rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard-stats {
+        gap: 11px;
+    }
+
+    .stat-card {
+        padding: 17px;
+    }
+
+    .stat-card strong {
+        font-size: 1.65rem;
+    }
+
+    .dashboard-panel {
+        padding: 19px;
+    }
+
+    .recent-visit {
+        align-items: flex-start;
+    }
+}

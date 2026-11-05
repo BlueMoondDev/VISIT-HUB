@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de citas | VisitHub</title>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin-visits.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="admin-body">
+
+    
+<aside class="admin-sidebar">
+  <a class="admin-brand" href="dashboard.html">
+    Visit<span>Hub</span>
+    <small>ADMINISTRACIÓN</small>
+  </a>
+
+  <nav class="admin-nav">
+    <a href="dashboard.html">
+      <span>▦</span> Dashboard
+    </a>
+
+    <a class="active" href="visits.html">
+      <span>▤</span> Citas
+    </a>
+
+    <a href="calendar.html">
+      <span>▦</span> Calendario
+    </a>
+
+    <a href="users.html">
+      <span>♙</span> Usuarios
+    </a>
+
+    <a href="settings.html">
+      <span>⚙</span> Configuración
+    </a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <span id="admin-name">Administrador</span>
+
+    <button id="logout-button" class="button button-ghost button-full">
+      Cerrar sesión
+    </button>
+  </div>
+</aside>
+
+
+    <main class="admin-main">
+      <header class="visits-header">
+        <div>
+          <span class="eyebrow">ADMINISTRACIÓN / CITAS</span>
+          <h1>Gestión de citas</h1>
+          <p>Consulta y administra las solicitudes recibidas.</p>
+        </div>
+
+        <a href="dashboard.html" class="back-link">
+          Volver al resumen
+        </a>
+      </header>
+
+      <section class="visits-stats">
+        <article class="visit-stat">
+          <span>Total de solicitudes</span>
+          <strong id="total-count">—</strong>
+        </article>
+
+        <article class="visit-stat">
+          <span>Pendientes</span>
+          <strong id="pending-count">—</strong>
+        </article>
+
+        <article class="visit-stat">
+          <span>Aprobadas</span>
+          <strong id="approved-count">—</strong>
+        </article>
+
+        <article class="visit-stat">
+          <span>Rechazadas</span>
+          <strong id="rejected-count">—</strong>
+        </article>
+      </section>
+
+      <section class="visits-panel">
+        <div class="visits-toolbar">
+          <div>
+            <h2>Solicitudes recibidas</h2>
+            <p>Selecciona una solicitud para consultar sus detalles.</p>
+          </div>
+
+          <input
+            id="search-visits"
+            type="search"
+            placeholder="Buscar por título..."
+            aria-label="Buscar citas"
+          >
+        </div>
+
+        <div class="visits-filters">
+          <button class="filter-button active" data-status="all">
+            Todas
+          </button>
+          <button class="filter-button" data-status="pending">
+            Pendientes
+          </button>
+          <button class="filter-button" data-status="approved">
+            Aprobadas
+          </button>
+          <button class="filter-button" data-status="rejected">
+            Rechazadas
+          </button>
+          <button class="filter-button" data-status="cancelled">
+            Canceladas
+          </button>
+        </div>
+
+        <div id="visits-message" class="visits-message">
+          Cargando solicitudes...
+        </div>
+
+        <div class="visits-table-wrapper">
+          <table class="visits-table">
+            <thead>
+              <tr>
+                <th>Solicitud</th>
+                <th>Usuario</th>
+                <th>Categoría</th>
+                <th>Fecha solicitada</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody id="visits-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Ventana de detalles -->
+  <dialog id="visit-dialog" class="visit-dialog">
+    <div class="dialog-header">
+      <div>
+        <span class="eyebrow">DETALLES DE LA SOLICITUD</span>
+        <h2 id="detail-title">Solicitud</h2>
+      </div>
+
+      <button id="close-dialog" class="dialog-close" aria-label="Cerrar">
+        ×
+      </button>
+    </div>
+
+    <div class="dialog-content">
+      <div class="detail-grid">
+        <div class="detail-item">
+          <span>Usuario</span>
+          <strong id="detail-user">—</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Categoría</span>
+          <strong id="detail-category">—</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Fecha preferida</span>
+          <strong id="detail-date">—</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Hora preferida</span>
+          <strong id="detail-time">—</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Estado</span>
+          <strong id="detail-status">—</strong>
+        </div>
+
+        <div class="detail-item">
+          <span>Fecha de creación</span>
+          <strong id="detail-created">—</strong>
+        </div>
+      </div>
+
+      <div class="detail-description">
+        <span>Motivo de la solicitud</span>
+        <p id="detail-reason">—</p>
+      </div>
+
+      <div class="detail-description">
+        <span>Respuesta del administrador</span>
+        <p id="detail-response">Sin respuesta todavía.</p>
+      </div>
+    </div>
+
+    <div class="dialog-actions" id="detail-actions">
+      <button id="approve-button" class="action-approve">
+        Aprobar cita
+      </button>
+
+      <button id="reject-button" class="action-reject">
+        Rechazar cita
+      </button>
+
+      <button id="delete-button" class="action-delete">
+        Eliminar
+      </button>
+    </div>
+  </dialog>
+
+  <script type="module" src="../js/admin/visits.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración | VisitHub</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-settings.css">
+</head>
+
+<body class="admin-body">
+
+    <aside class="admin-sidebar">
+        <a class="admin-brand" href="dashboard.html">
+            Visit<span>Hub</span>
+            <small>ADMINISTRACIÓN</small>
+        </a>
+
+        <nav class="admin-nav">
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+            <a href="visits.html">
+                <span>▤</span> Citas
+            </a>
+            <a href="calendar.html">
+                <span>▦</span> Calendario
+            </a>
+            <a href="users.html">
+                <span>♙</span> Usuarios
+            </a>
+            <a class="active" href="settings.html">
+                <span>⚙</span> Configuración
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <span id="admin-name">Administrador</span>
+            <button id="logout-button" class="button button-ghost button-full">
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="settings-header">
+            <div>
+                <p class="settings-eyebrow">ADMINISTRACIÓN</p>
+                <h1>Configuración</h1>
+                <p>Gestiona dónde recibes las nuevas peticiones de VisitHub.</p>
+            </div>
+        </header>
+
+        <section class="settings-section">
+
+            <div class="settings-section-heading">
+                <h2>Canales de notificación</h2>
+                <p>Configura los destinos de las notificaciones.</p>
+            </div>
+
+            <div class="settings-grid">
+
+                <article class="settings-card">
+                    <div class="settings-card-icon telegram-icon">✈</div>
+
+                    <h3>Telegram</h3>
+                    <p>
+                        Recibe avisos de nuevas peticiones en un chat,
+                        grupo o canal de Telegram.
+                    </p>
+
+                    <label for="telegram-chat-id">Telegram Chat ID</label>
+                    <input
+                        type="text"
+                        id="telegram-chat-id"
+                        placeholder="Ej. 123456789"
+                    >
+
+                    <small>
+                        El token del bot se configurará posteriormente
+                        de forma segura en el servidor.
+                    </small>
+                </article>
+
+                <article class="settings-card">
+                    <div class="settings-card-icon email-icon">✉</div>
+
+                    <h3>Correo electrónico</h3>
+                    <p>
+                        Establece la dirección que recibirá los avisos
+                        de nuevas peticiones.
+                    </p>
+
+                    <label for="notification-email">Correo de destino</label>
+                    <input
+                        type="email"
+                        id="notification-email"
+                        placeholder="ejemplo@correo.com"
+                    >
+
+                    <small>
+                        La conexión con el servicio de envío se configurará
+                        posteriormente.
+                    </small>
+                </article>
+
+            </div>
+        </section>
+
+        <div class="settings-actions">
+            <span id="settings-message" role="status"></span>
+
+            <button id="save-settings" class="button button-primary">
+                Guardar cambios
+            </button>
+        </div>
+
+    </main>
+
+    <script type="module" src="../js/admin/settings.js"></script>
+</body>
+</html>
+```

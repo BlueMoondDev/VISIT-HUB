@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración | VisitHub</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <a class="admin-brand" href="dashboard.html">
+      Visit<span>Hub</span>
+      <small>ADMINISTRACIÓN</small>
+    </a>
+
+    <nav class="admin-nav">
+      <a class="active" href="dashboard.html">
+        <span>▦</span> Dashboard
+      </a>
+      <a href="visits.html">
+        <span>▤</span> Citas
+      </a>
+      <a href="calendar.html">
+        <span>▦</span> Calendario
+      </a>
+      <a href="users.html">
+        <span>♙</span> Usuarios
+      </a>
+      <a href="settings.html">
+        <span>⚙</span> Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span id="admin-name">Administrador</span>
+      <button id="logout-button" class="button button-ghost button-full">
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <div>
+        <span class="eyebrow">PANEL DE CONTROL</span>
+        <h1>Dashboard</h1>
+        <p class="muted">Resumen general de VisitHub.</p>
+      </div>
+      <a class="button button-primary" href="visits.html">
+        Ver todas las citas
+      </a>
+    </header>
+
+    <section class="admin-stats">
+      <article class="admin-stat">
+        <span>Total de citas</span>
+        <strong id="stat-total">—</strong>
+        <small>Solicitudes registradas</small>
+      </article>
+
+      <article class="admin-stat">
+        <span>Pendientes</span>
+        <strong id="stat-pending">—</strong>
+        <small>Necesitan revisión</small>
+      </article>
+
+      <article class="admin-stat">
+        <span>Aprobadas</span>
+        <strong id="stat-approved">—</strong>
+        <small>Citas aceptadas</small>
+      </article>
+
+      <article class="admin-stat">
+        <span>Rechazadas</span>
+        <strong id="stat-rejected">—</strong>
+        <small>Solicitudes rechazadas</small>
+      </article>
+    </section>
+
+    <section class="admin-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Citas pendientes</h2>
+          <p class="muted">Solicitudes que todavía necesitan tu atención.</p>
+        </div>
+        <a href="visits.html" class="text-link">Ver todas →</a>
+      </div>
+
+      <div id="pending-list" class="admin-table-wrap">
+        <p class="muted">Cargando citas…</p>
+      </div>
+
+      <p id="dashboard-message" class="form-message" aria-live="polite"></p>
+    </section>
+
+    <section class="admin-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Próximas citas</h2>
+          <p class="muted">Visitas aprobadas y programadas.</p>
+        </div>
+        <a href="calendar.html" class="text-link">Abrir calendario →</a>
+      </div>
+
+      <div id="upcoming-list">
+        <p class="muted">Cargando próximas citas…</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="../js/admin/dashboard.js"></script>
+</body>
+</html>

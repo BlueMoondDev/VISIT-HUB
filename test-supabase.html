@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>VisitHub - Diagnóstico</title>
+</head>
+<body style="background:#eaf4fc; color:#263b50; font-family:Arial; padding:30px">
+
+    <h1>VisitHub</h1>
+    <h2>Prueba de funcionamiento</h2>
+
+    <p>Si puedes leer esto, el HTML funciona correctamente.</p>
+
+    <p id="connection">Comprobando conexión...</p>
+
+    <script type="module">
+        import { supabase } from './js/supabase.js';
+
+        const status = document.getElementById('connection');
+
+        async function testConnection() {
+            try {
+                const { error } = await supabase
+                    .from('visits')
+                    .select('id')
+                    .limit(1);
+
+                if (error) {
+                    status.textContent = 'Error de Supabase: ' + error.message;
+                    return;
+                }
+
+                status.textContent = '¡Conexión correcta!';
+            } catch (error) {
+                status.textContent = 'Error de JavaScript: ' + error.message;
+            }
+        }
+
+        testConnection();
+    </script>
+
+</body>
+</html>

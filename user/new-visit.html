@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva cita | VisitHub</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/user-new-visit.css">
+</head>
+
+<body class="user-body">
+
+    <aside class="user-sidebar">
+        <a class="user-brand" href="dashboard.html">
+            Visit<span>Hub</span>
+            <small>ÁREA DE USUARIO</small>
+        </a>
+
+        <nav class="user-nav">
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="visits.html">
+                <span>▤</span> Mis citas
+            </a>
+
+            <a class="active" href="new-visit.html">
+                <span>＋</span> Nueva cita
+            </a>
+
+            <a href="calendar.html">
+                <span>▦</span> Calendario
+            </a>
+
+            <a href="profile.html">
+                <span>♙</span> Mi perfil
+            </a>
+        </nav>
+
+        <div class="user-sidebar-bottom">
+            <span id="user-name">Usuario</span>
+            <button id="logout-button" class="button button-ghost button-full">
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="user-main">
+
+        <header class="user-header">
+            <div>
+                <span class="page-eyebrow">SOLICITUDES</span>
+                <h1>Nueva cita</h1>
+                <p>Cuéntanos qué necesitas y prepararemos tu solicitud.</p>
+            </div>
+        </header>
+
+        <section class="new-visit-container">
+
+            <div class="new-visit-intro">
+                <div class="intro-icon">＋</div>
+
+                <div>
+                    <h2>Solicitar una cita</h2>
+                    <p>
+                        Completa los siguientes campos para enviar
+                        una nueva solicitud al administrador.
+                    </p>
+                </div>
+            </div>
+
+            <form id="new-visit-form">
+
+                <div class="form-group">
+                    <label for="title">Título de la solicitud</label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Ej. Reparación de ordenador"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Categoría</label>
+
+                    <select id="category" name="category" required>
+                        <option value="" disabled selected>
+                            Selecciona una categoría
+                        </option>
+
+                        <option value="informatica">Informática</option>
+                        <option value="hardware">Hardware</option>
+                        <option value="software">Software</option>
+                        <option value="gaming">Gaming</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Descripción de la solicitud</label>
+
+                    <textarea
+                        id="reason"
+                        name="reason"
+                        rows="5"
+                        maxlength="2000"
+                        placeholder="Explica detalladamente qué necesitas..."
+                        required
+                    ></textarea>
+
+                    <small>Máximo 2000 caracteres.</small>
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="preferred-date">Fecha preferida</label>
+
+                        <input
+                            type="date"
+                            id="preferred-date"
+                            name="preferred-date"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferred-time">Hora preferida</label>
+
+                        <input
+                            type="time"
+                            id="preferred-time"
+                            name="preferred-time"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+                <div class="visit-notice">
+                    <span class="notice-icon">ⓘ</span>
+
+                    <p>
+                        La fecha y hora que indiques son preferencias.
+                        El administrador revisará tu solicitud y confirmará
+                        si es posible realizar la cita.
+                    </p>
+                </div>
+
+                <div id="form-message" class="form-message" role="status"
+                    aria-live="polite"></div>
+
+                <div class="form-actions">
+                    <a href="dashboard.html" class="cancel-button">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" id="submit-button" class="submit-button">
+                        Enviar solicitud
+                        <span>→</span>
+                    </button>
+                </div>
+
+            </form>
+
+            <div id="success-panel" class="success-panel" hidden>
+                <div class="success-icon">✓</div>
+
+                <h2>¡Solicitud enviada!</h2>
+
+                <p>
+                    Tu solicitud se ha registrado correctamente.
+                    Ahora está pendiente de revisión por el administrador.
+                </p>
+
+                <a href="dashboard.html" class="submit-button">
+                    Volver al dashboard →
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="../js/user/new-visit.js"></script>
+
+</body>
+</html>

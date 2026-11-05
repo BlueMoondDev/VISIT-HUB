@@ -1,0 +1,227 @@
+
+/* ================================
+   VISITHUB - ADMIN SETTINGS
+================================ */
+.settings-header {
+    margin-bottom: 32px;
+}
+
+.settings-eyebrow {
+    color: #7b9fc8;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.settings-header h1 {
+    color: #34465d;
+    font-size: 2rem;
+    margin: 0 0 8px;
+}
+
+.settings-header p:last-child {
+    color: #8293a8;
+    margin: 0;
+}
+
+.settings-section {
+    margin-bottom: 28px;
+}
+
+.settings-section-heading {
+    margin-bottom: 18px;
+}
+
+.settings-section-heading h2 {
+    color: #40536b;
+    font-size: 1.2rem;
+    margin: 0 0 6px;
+}
+
+.settings-section-heading p {
+    color: #8999ad;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.settings-card {
+    background: #f4f8fd;
+    border: 1px solid #e1ebf6;
+    border-radius: 18px;
+    padding: 26px;
+    min-width: 0;
+    box-shadow: 0 4px 14px rgba(90, 125, 165, 0.05);
+}
+
+.settings-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+}
+
+.telegram-icon {
+    color: #478fbd;
+    background: #e3f2fc;
+}
+
+.email-icon {
+    color: #758db9;
+    background: #e9effb;
+}
+
+.settings-card h3 {
+    color: #40536b;
+    font-size: 1.1rem;
+    margin: 0 0 8px;
+}
+
+.settings-card p {
+    color: #8494a8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    min-height: 44px;
+    margin: 0 0 22px;
+}
+
+.settings-card label {
+    display: block;
+    color: #53677f;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.settings-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #dce7f3;
+    border-radius: 10px;
+    background: #f9fbfe;
+    color: #40536b;
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.settings-card input:focus {
+    border-color: #91b8df;
+    box-shadow: 0 0 0 3px rgba(145, 184, 223, 0.16);
+}
+
+.settings-card input::placeholder {
+    color: #b0bdcc;
+}
+
+.settings-card small {
+    display: block;
+    color: #94a2b3;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.settings-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid #e5edf6;
+}
+
+#settings-message {
+    color: #7189a5;
+    font-size: 0.85rem;
+}
+
+#settings-message.success {
+    color: #438b72;
+}
+
+#settings-message.error {
+    color: #c16e79;
+}
+
+@media (max-width: 850px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-card p {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .settings-card {
+        padding: 20px;
+    }
+
+    .settings-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .settings-actions button {
+        width: 100%;
+    }
+}
+/* DEBUG: corregir distribución del panel */
+
+.admin-body {
+    display: grid !important;
+    grid-template-columns: 250px minmax(0, 1fr) !important;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    width: 250px;
+    min-width: 0;
+}
+
+.admin-main {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+@media (max-width: 850px) {
+    .admin-body {
+        grid-template-columns: 1fr !important;
+    }
+
+    .admin-sidebar,
+    .admin-main {
+        grid-column: 1;
+        grid-row: auto;
+        width: 100%;
+    }
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios | VisitHub</title>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-users.css">
+</head>
+
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <a class="admin-brand" href="dashboard.html">
+      Visit<span>Hub</span>
+      <small>ADMINISTRACIÓN</small>
+    </a>
+
+    <nav class="admin-nav">
+      <a href="dashboard.html">
+        <span>▦</span> Dashboard
+      </a>
+
+      <a href="visits.html">
+        <span>▤</span> Citas
+      </a>
+
+      <a href="calendar.html">
+        <span>▦</span> Calendario
+      </a>
+
+      <a class="active" href="users.html">
+        <span>♙</span> Usuarios
+      </a>
+
+      <a href="settings.html">
+        <span>⚙</span> Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span id="admin-name">Administrador</span>
+
+      <button id="logout-button" class="button button-ghost button-full">
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <header class="admin-topbar">
+      <div>
+        <span class="eyebrow">GESTIÓN DE CUENTAS</span>
+        <h1>Usuarios</h1>
+        <p>Consulta los usuarios registrados y su actividad en VisitHub.</p>
+      </div>
+    </header>
+
+    <section class="admin-stats users-stats">
+      <article class="admin-stat">
+        <span>Usuarios registrados</span>
+        <strong id="total-users">—</strong>
+        <small>Cuentas con rol de usuario</small>
+      </article>
+
+      <article class="admin-stat">
+        <span>Citas solicitadas</span>
+        <strong id="total-user-visits">—</strong>
+        <small>Actividad total de los usuarios</small>
+      </article>
+
+      <article class="admin-stat">
+        <span>Usuarios con citas</span>
+        <strong id="active-users">—</strong>
+        <small>Han solicitado al menos una cita</small>
+      </article>
+
+      <article class="admin-stat">
+        <span>Nuevos usuarios</span>
+        <strong id="new-users">—</strong>
+        <small>Registrados en los últimos 30 días</small>
+      </article>
+    </section>
+
+    <section class="admin-panel users-panel">
+
+      <div class="panel-heading users-heading">
+        <div>
+          <h2>Listado de usuarios</h2>
+          <p>Solo se muestran cuentas con rol de usuario.</p>
+        </div>
+
+        <div class="users-search">
+          <span aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            id="user-search"
+            placeholder="Buscar usuario..."
+            autocomplete="off"
+          >
+        </div>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table users-table">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Nombre de usuario</th>
+              <th>Fecha de registro</th>
+              <th>Citas</th>
+              <th>Actividad</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody id="users-table-body">
+            <tr>
+              <td colspan="6" class="empty-state">
+                Cargando usuarios...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="users-empty" class="users-empty" hidden>
+        <span>♙</span>
+        <strong>No se encontraron usuarios</strong>
+        <p>Prueba con otro nombre o username.</p>
+      </div>
+
+      <div class="users-footer">
+        <span id="users-count">Cargando...</span>
+      </div>
+
+    </section>
+
+    <p id="users-message" class="users-message" role="status"></p>
+
+  </main>
+
+  <!-- FICHA DEL USUARIO -->
+
+  <dialog id="user-dialog" class="user-dialog">
+
+    <div class="user-dialog-header">
+      <div class="user-profile-heading">
+        <div class="user-avatar" id="dialog-avatar">U</div>
+
+        <div>
+          <span class="eyebrow">PERFIL DE USUARIO</span>
+          <h2 id="dialog-name">Usuario</h2>
+          <p id="dialog-username">@usuario</p>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="close-user-dialog"
+        class="dialog-close"
+        aria-label="Cerrar"
+      >×</button>
+    </div>
+
+    <div class="user-profile-info">
+      <div>
+        <span>Fecha de registro</span>
+        <strong id="dialog-created">—</strong>
+      </div>
+
+      <div>
+        <span>Total de citas</span>
+        <strong id="dialog-visits-count">—</strong>
+      </div>
+    </div>
+
+    <section class="user-history">
+      <div class="panel-heading">
+        <div>
+          <h3>Historial de citas</h3>
+          <p>Solicitudes realizadas por este usuario.</p>
+        </div>
+      </div>
+
+      <div id="dialog-visits" class="user-history-list">
+        <p class="empty-state">Cargando historial...</p>
+      </div>
+    </section>
+
+    <div class="user-dialog-actions">
+      <button
+        type="button"
+        id="close-user-dialog-bottom"
+        class="button button-secondary"
+      >
+        Cerrar ficha
+      </button>
+    </div>
+
+  </dialog>
+
+  <script type="module" src="../js/admin/users.js"></script>
+
+</body>
+</html>

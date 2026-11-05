@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi espacio | VisitHub</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/user-dashboard.css">
+</head>
+
+<body class="user-body">
+
+    <aside class="user-sidebar">
+        <a class="user-brand" href="dashboard.html">
+            Visit<span>Hub</span>
+            <small>ÁREA PERSONAL</small>
+        </a>
+
+        <nav class="user-nav">
+            <a class="active" href="dashboard.html">
+                <span>▦</span> Inicio
+            </a>
+
+            <a href="visits.html">
+                <span>▤</span> Mis citas
+            </a>
+
+            <a href="new-visit.html">
+                <span>＋</span> Nueva cita
+            </a>
+
+            <a href="calendar.html">
+                <span>▦</span> Calendario
+            </a>
+
+            <a href="profile.html">
+                <span>♙</span> Mi perfil
+            </a>
+        </nav>
+
+        <div class="user-sidebar-bottom">
+            <span id="user-name">Usuario</span>
+            <button id="logout-button" class="button button-ghost button-full">
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="user-main">
+
+        <header class="user-header">
+            <div>
+                <p class="dashboard-eyebrow">TU ESPACIO PERSONAL</p>
+                <h1 id="welcome-title">¡Hola!</h1>
+                <p>Este es el resumen de tu actividad en VisitHub.</p>
+            </div>
+
+            <a href="new-visit.html" class="button button-primary">
+                + Nueva cita
+            </a>
+        </header>
+
+        <section class="dashboard-stats">
+
+            <article class="stat-card pending-stat">
+                <span class="stat-label">Pendientes</span>
+                <strong id="pending-count">—</strong>
+                <span class="stat-description">Esperando revisión</span>
+            </article>
+
+            <article class="stat-card approved-stat">
+                <span class="stat-label">Aprobadas</span>
+                <strong id="approved-count">—</strong>
+                <span class="stat-description">Citas confirmadas</span>
+            </article>
+
+            <article class="stat-card rejected-stat">
+                <span class="stat-label">Rechazadas</span>
+                <strong id="rejected-count">—</strong>
+                <span class="stat-description">Solicitudes rechazadas</span>
+            </article>
+
+            <article class="stat-card total-stat">
+                <span class="stat-label">Total de citas</span>
+                <strong id="total-count">—</strong>
+                <span class="stat-description">Todas tus solicitudes</span>
+            </article>
+
+        </section>
+
+        <section class="dashboard-content">
+
+            <article class="dashboard-panel next-visit-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Tu próxima visita</h2>
+                        <p>Tu próxima cita confirmada.</p>
+                    </div>
+                    <span class="panel-icon">▣</span>
+                </div>
+
+                <div id="next-visit-content" class="next-visit-content">
+                    <p class="loading-text">Cargando próxima visita...</p>
+                </div>
+            </article>
+
+            <article class="dashboard-panel recent-visits-panel">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Solicitudes recientes</h2>
+                        <p>Un vistazo a tus últimas peticiones.</p>
+                    </div>
+
+                    <a href="visits.html" class="panel-link">Ver todas</a>
+                </div>
+
+                <div id="recent-visits-content">
+                    <p class="loading-text">Cargando solicitudes...</p>
+                </div>
+            </article>
+
+        </section>
+
+        <div id="dashboard-message" role="status"></div>
+
+    </main>
+
+    <script type="module" src="../js/user/dashboard.js"></script>
+
+</body>
+</html>

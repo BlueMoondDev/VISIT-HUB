@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de visita | VisitHub</title>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/admin-visit-detail.css">
+</head>
+
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <a class="admin-brand" href="dashboard.html">
+      Visit<span>Hub</span>
+      <small>ADMINISTRACIÓN</small>
+    </a>
+
+    <nav class="admin-nav">
+      <a href="dashboard.html">
+        <span>▦</span> Dashboard
+      </a>
+
+      <a class="active" href="visits.html">
+        <span>▤</span> Citas
+      </a>
+
+      <a href="calendar.html">
+        <span>▦</span> Calendario
+      </a>
+
+      <a href="users.html">
+        <span>♙</span> Usuarios
+      </a>
+
+      <a href="settings.html">
+        <span>⚙</span> Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <span id="admin-name">Administrador</span>
+
+      <button id="logout-button" class="button button-ghost button-full">
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+
+    <header class="detail-header">
+      <div>
+        <a href="visits.html" class="detail-back">← Volver a las citas</a>
+        <span class="eyebrow">GESTIÓN DE CITAS</span>
+        <h1 id="visit-title">Cargando visita...</h1>
+        <p id="visit-subtitle">Información detallada de la solicitud.</p>
+      </div>
+
+      <span id="visit-status" class="status-badge">Cargando...</span>
+    </header>
+
+    <div id="detail-error" class="detail-error" hidden></div>
+
+    <div id="visit-content" class="visit-detail-layout" hidden>
+
+      <div class="visit-detail-main">
+
+        <section class="admin-panel">
+          <div class="detail-section-heading">
+            <div>
+              <span class="eyebrow">SOLICITUD</span>
+              <h2>Información de la visita</h2>
+            </div>
+          </div>
+
+          <div class="detail-grid">
+            <div class="detail-field">
+              <span>Categoría</span>
+              <strong id="visit-category">—</strong>
+            </div>
+
+            <div class="detail-field">
+              <span>Fecha de solicitud</span>
+              <strong id="visit-created">—</strong>
+            </div>
+
+            <div class="detail-field">
+              <span>Fecha preferida</span>
+              <strong id="visit-preferred-date">—</strong>
+            </div>
+
+            <div class="detail-field">
+              <span>Horario preferido</span>
+              <strong id="visit-preferred-time">—</strong>
+            </div>
+
+            <div class="detail-field full">
+              <span>Motivo de la visita</span>
+              <p id="visit-reason">—</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel">
+          <div class="detail-section-heading">
+            <div>
+              <span class="eyebrow">SOLICITANTE</span>
+              <h2>Información del usuario</h2>
+            </div>
+          </div>
+
+          <div class="detail-grid">
+            <div class="detail-field">
+              <span>Nombre</span>
+              <strong id="user-name">—</strong>
+            </div>
+
+            <div class="detail-field">
+              <span>Nombre de usuario</span>
+              <strong id="user-username">—</strong>
+            </div>
+
+            <div class="detail-field full">
+              <span>Identificador de cuenta</span>
+              <strong id="user-id" class="detail-id">—</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="admin-panel">
+          <div class="detail-section-heading">
+            <div>
+              <span class="eyebrow">RESOLUCIÓN</span>
+              <h2>Respuesta administrativa</h2>
+              <p>Información que podrá consultar el usuario.</p>
+            </div>
+          </div>
+
+          <label class="detail-label" for="admin-response">
+            Mensaje o respuesta
+          </label>
+
+          <textarea
+            id="admin-response"
+            class="detail-textarea"
+            rows="4"
+            placeholder="Escribe una respuesta para el usuario..."
+          ></textarea>
+
+          <div id="scheduled-fields" class="scheduled-fields">
+            <h3>Asignar horario definitivo</h3>
+
+            <div class="schedule-inputs">
+              <div>
+                <label class="detail-label" for="scheduled-start">
+                  Inicio de la visita
+                </label>
+                <input
+                  type="datetime-local"
+                  id="scheduled-start"
+                  class="detail-input"
+                >
+              </div>
+
+              <div>
+                <label class="detail-label" for="scheduled-end">
+                  Fin de la visita
+                </label>
+                <input
+                  type="datetime-local"
+                  id="scheduled-end"
+                  class="detail-input"
+                >
+              </div>
+            </div>
+          </div>
+
+          <p id="action-message" class="action-message"></p>
+
+          <div id="pending-actions" class="detail-actions">
+            <button id="reject-button" class="button button-secondary">
+              Rechazar solicitud
+            </button>
+
+            <button id="approve-button" class="button button-primary">
+              Aprobar visita
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="visit-detail-side">
+        <section class="admin-panel">
+          <span class="eyebrow">RESUMEN</span>
+          <h2>Estado de la visita</h2>
+
+          <div class="summary-item">
+            <span>Estado actual</span>
+            <strong id="summary-status">—</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Fecha asignada</span>
+            <strong id="summary-date">Sin asignar</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Horario asignado</span>
+            <strong id="summary-time">Sin asignar</strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Última revisión</span>
+            <strong id="summary-reviewed">Sin revisar</strong>
+          </div>
+        </section>
+
+        <section class="admin-panel danger-panel">
+          <span class="eyebrow">ZONA DE PELIGRO</span>
+          <h2>Eliminar solicitud</h2>
+          <p>Esta acción eliminará la cita permanentemente.</p>
+
+          <button id="delete-button" class="button button-danger button-full">
+            Eliminar visita
+          </button>
+        </section>
+      </aside>
+
+    </div>
+  </main>
+
+  <script type="module" src="../js/admin/visit-detail.js"></script>
+
+</body>
+</html>
