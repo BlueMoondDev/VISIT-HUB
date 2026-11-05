@@ -285,7 +285,13 @@ async function updateVisitStatus(status) {
 }
 
 async function deleteVisit() {
-  if (!selectedVisit) return;
+async function deleteVisit() {
+  if (!selectedVisit) {
+    alert('No hay ninguna solicitud seleccionada.');
+    return;
+  }
+
+  const visitId = selectedVisit.id;
 
   const confirmation = window.confirm(
     '¿Seguro que quieres eliminar esta solicitud? Esta acción no se puede deshacer.'
@@ -295,23 +301,39 @@ async function deleteVisit() {
 
   setActionsDisabled(true);
 
-  const { error } = await supabase
-    .from('visits')
-    .delete()
-    .eq('id', selectedVisit.id);
+  try {
+    const { data, error } = await supabase
+      .from('visits')
+      .delete()
+      .eq('id', visitId)
+      .select('id');
 
-  setActionsDisabled(false);
+    if (error) {
+      console.error('Error al eliminar:', error);
+      alert(`Error al eliminar: ${error.message}`);
+      return;
+    }
 
-  if (error) {
+    if (!data || data.length === 0) {
+      alert('No se ha eliminado ninguna solicitud. Revisa los permisos de Supabase.');
+      return;
+    }
+
+    dialog.close();
+    selectedVisit = null;
+
+    await loadVisits();
+
+    alert('Solicitud eliminada correctamente.');
+
+  } catch (error) {
     console.error(error);
-    alert('No se pudo eliminar la solicitud. Comprueba la política de eliminación en Supabase.');
-    return;
+    alert('Ha ocurrido un error inesperado al eliminar.');
+
+  } finally {
+    setActionsDisabled(false);
   }
-
-  dialog.close();
-  selectedVisit = null;
-
-  await loadVisits();
+}
 }
 
 async function getCurrentAdmin() {

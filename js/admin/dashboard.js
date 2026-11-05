@@ -104,7 +104,7 @@ async function loadPending() {
             <td>${formatDate(visit.preferred_date)}</td>
             <td>
               <a class="table-link"
-                 href="visit-details.html?id=${encodeURIComponent(visit.id)}">
+                 href="visit-detail.html?id=${encodeURIComponent(visit.id)}">
                 Revisar
               </a>
             </td>
@@ -141,7 +141,7 @@ async function loadUpcoming() {
     <div class="upcoming-list">
       ${data.map(visit => `
         <a class="upcoming-item"
-           href="visit-details.html?id=${encodeURIComponent(visit.id)}">
+           href="visit-detail.html?id=${encodeURIComponent(visit.id)}"
           <div>
             <strong>${escapeHTML(visit.title)}</strong>
             <small>${formatDate(visit.scheduled_start)}</small>
