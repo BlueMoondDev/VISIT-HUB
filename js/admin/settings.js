@@ -1,14 +1,14 @@
 
 import { supabase } from "../supabase.js";
 
-const telegramInput = document.getElementById("telegram-chat-id");
 const emailInput = document.getElementById("notification-email");
 const saveButton = document.getElementById("save-settings");
 const message = document.getElementById("settings-message");
 const logoutButton = document.getElementById("logout-button");
 const adminName = document.getElementById("admin-name");
-const testTelegramButton = document.getElementById("test-telegram");
-const telegramTestMessage = document.getElementById("telegram-test-message");
+
+const testDiscordButton = document.getElementById("test-discord");
+const discordTestMessage = document.getElementById("discord-test-message");
 
 let currentUser = null;
 
@@ -50,7 +50,7 @@ async function loadSettings() {
 
     const { data, error } = await supabase
         .from("notification_settings")
-        .select("telegram_chat_id, notification_email")
+        .select("notification_email")
         .eq("id", 1)
         .maybeSingle();
 
@@ -60,7 +60,6 @@ async function loadSettings() {
         return;
     }
 
-    telegramInput.value = data?.telegram_chat_id || "";
     emailInput.value = data?.notification_email || "";
 
     showMessage("");
@@ -71,8 +70,6 @@ async function saveSettings() {
         showMessage("No se ha podido verificar tu sesión.", "error");
         return;
     }
-
-    const telegramChatId = telegramInput.value.trim();
     const notificationEmail = emailInput.value.trim();
 
     if (notificationEmail && !emailInput.checkValidity()) {
@@ -89,14 +86,13 @@ async function saveSettings() {
             .from("notification_settings")
             .upsert({
                 id: 1,
-                telegram_chat_id: telegramChatId || null,
                 notification_email: notificationEmail || null,
                 updated_at: new Date().toISOString(),
                 updated_by: currentUser.id
             }, {
                 onConflict: "id"
             })
-            .select("id, telegram_chat_id, notification_email, updated_at")
+            .select("id, notification_email, updated_at")
             .single();
 
         if (error) {
@@ -106,7 +102,6 @@ async function saveSettings() {
         }
 
         // Comprobamos que Supabase ha devuelto los datos guardados.
-        telegramInput.value = data.telegram_chat_id || "";
         emailInput.value = data.notification_email || "";
 
         console.log("Configuración guardada:", data);
@@ -121,47 +116,58 @@ async function saveSettings() {
         saveButton.disabled = false;
     }
 }
-async function testTelegram() {
+
+async function testDiscord() {
     if (!currentUser) {
-        telegramTestMessage.textContent = "No se ha podido verificar tu sesión.";
-        telegramTestMessage.className = "error";
+        discordTestMessage.textContent =
+            "No se ha podido verificar tu sesión.";
+        discordTestMessage.className = "error";
         return;
     }
 
-    testTelegramButton.disabled = true;
-    telegramTestMessage.textContent = "Enviando mensaje de prueba...";
-    telegramTestMessage.className = "";
+    testDiscordButton.disabled = true;
+    discordTestMessage.textContent =
+        "Enviando mensaje de prueba...";
+    discordTestMessage.className = "";
 
     try {
         const { data, error } = await supabase.functions.invoke(
-            "telegram-test",
+            "discord-test",
             {
                 body: {}
             }
         );
 
         if (error) {
-            console.error("Error al probar Telegram:", error);
-            throw new Error("No se pudo conectar con la función de Telegram.");
+            console.error("Error al probar Discord:", error);
+            throw new Error(
+                "No se pudo conectar con la función de Discord."
+            );
         }
 
         if (!data?.success) {
-            throw new Error(data?.error || "Telegram no pudo enviar el mensaje.");
+            throw new Error(
+                data?.error || "Discord no pudo enviar el mensaje."
+            );
         }
 
-        telegramTestMessage.textContent = "¡Mensaje enviado correctamente! Revisa Telegram.";
-        telegramTestMessage.className = "success";
+        discordTestMessage.textContent =
+            "¡Mensaje enviado correctamente! Revisa tus mensajes privados de Discord.";
+
+        discordTestMessage.className = "success";
 
     } catch (error) {
         console.error(error);
-        telegramTestMessage.textContent = error.message;
-        telegramTestMessage.className = "error";
+
+        discordTestMessage.textContent = error.message;
+        discordTestMessage.className = "error";
 
     } finally {
-        testTelegramButton.disabled = false;
+        testDiscordButton.disabled = false;
     }
 }
-testTelegramButton.addEventListener("click", testTelegram);
+
+testDiscordButton.addEventListener("click", testDiscord);
 saveButton.addEventListener("click", saveSettings);
 
 logoutButton.addEventListener("click", async () => {
