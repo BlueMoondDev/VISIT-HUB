@@ -1,0 +1,350 @@
+
+/* ========================================
+   MIS CITAS - VISITHUB
+======================================== */
+
+.user-visits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.user-visits-header h1 {
+    margin: 8px 0;
+    color: #34445c;
+}
+
+.user-visits-header p,
+.user-visits-toolbar p {
+    color: #8797ac;
+    margin: 6px 0 0;
+}
+
+/* Estadísticas */
+
+.user-visits-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.user-visit-stat {
+    background: #f5f9fe;
+    border: 1px solid #e5edf7;
+    border-radius: 16px;
+    padding: 21px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-visit-stat span {
+    color: #8293aa;
+    font-size: 13px;
+}
+
+.user-visit-stat strong {
+    color: #405875;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* Panel principal */
+
+.user-visits-panel {
+    background: #f9fbfe;
+    border: 1px solid #e7eef7;
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.user-visits-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.user-visits-toolbar h2 {
+    color: #40536d;
+    font-size: 19px;
+    margin: 0;
+}
+
+.user-visits-toolbar input {
+    width: min(260px, 100%);
+    padding: 11px 14px;
+    border: 1px solid #dfe8f3;
+    border-radius: 10px;
+    background: #f4f8fd;
+    color: #52647c;
+    outline: none;
+}
+
+.user-visits-toolbar input:focus {
+    border-color: #a9c9ec;
+    box-shadow: 0 0 0 3px rgba(169, 201, 236, 0.18);
+}
+
+/* Filtros */
+
+.user-visits-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 20px;
+}
+
+.user-visits-filters .filter-button {
+    border: 1px solid #e2eaf4;
+    border-radius: 9px;
+    padding: 9px 15px;
+    background: #f1f6fc;
+    color: #8191a8;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.user-visits-filters .filter-button:hover {
+    background: #e8f1fc;
+    color: #55769e;
+}
+
+.user-visits-filters .filter-button.active {
+    background: #dceafb;
+    border-color: #c8dcf4;
+    color: #5279a6;
+}
+
+/* Mensajes */
+
+.user-visits-message {
+    color: #8797ac;
+    font-size: 14px;
+    padding: 12px 0;
+}
+
+/* Tabla */
+
+.user-visits-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.user-visits-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.user-visits-table th {
+    color: #8999ad;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 14px 12px;
+    border-bottom: 1px solid #e8eef5;
+}
+
+.user-visits-table td {
+    color: #65768e;
+    font-size: 14px;
+    padding: 17px 12px;
+    border-bottom: 1px solid #edf1f7;
+}
+
+.user-visits-table tbody tr:hover {
+    background: #f3f7fc;
+}
+
+.visit-title {
+    display: block;
+    color: #455b77;
+    font-weight: 600;
+}
+
+.visit-subtitle {
+    display: block;
+    color: #a0adbd;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* Estados */
+
+.user-visits-table .status-pill {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fff3df;
+    color: #b28a4f;
+}
+
+.status-approved {
+    background: #e3f4e9;
+    color: #639477;
+}
+
+.status-rejected {
+    background: #fbe9e9;
+    color: #b96e6e;
+}
+
+.status-cancelled {
+    background: #edf0f5;
+    color: #8490a1;
+}
+
+/* Botón de detalles */
+
+.user-visits-table .view-button {
+    border: 1px solid #dce8f6;
+    background: #eaf2fc;
+    color: #6284ad;
+    padding: 8px 12px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.user-visits-table .view-button:hover {
+    background: #dceafb;
+}
+
+/* Ventana de detalles */
+
+.user-visit-dialog {
+    width: min(620px, calc(100% - 30px));
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid #e5edf6;
+    border-radius: 20px;
+    padding: 25px;
+    background: #f9fbfe;
+    color: #52647c;
+}
+
+.user-visit-dialog::backdrop {
+    background: rgba(49, 65, 86, 0.35);
+    backdrop-filter: blur(3px);
+}
+
+.user-visit-dialog .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e8eef5;
+}
+
+.user-visit-dialog .dialog-header h2 {
+    color: #40536d;
+    margin: 8px 0 0;
+}
+
+.user-visit-dialog .dialog-close {
+    border: 0;
+    background: #edf3fa;
+    color: #71849d;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.user-visit-dialog .dialog-content {
+    padding: 22px 0;
+}
+
+.user-visit-dialog .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.user-visit-dialog .detail-item {
+    background: #f0f5fb;
+    border: 1px solid #e6edf6;
+    border-radius: 12px;
+    padding: 13px;
+}
+
+.user-visit-dialog .detail-item span,
+.user-visit-dialog .detail-description span {
+    display: block;
+    color: #91a0b3;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.user-visit-dialog .detail-item strong {
+    color: #526984;
+    font-size: 14px;
+}
+
+.user-visit-dialog .detail-description {
+    background: #f0f5fb;
+    border: 1px solid #e6edf6;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.user-visit-dialog .detail-description p {
+    color: #647790;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.user-visit-dialog .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #e8eef5;
+    padding-top: 18px;
+}
+
+/* Adaptación a pantallas pequeñas */
+
+@media (max-width: 900px) {
+    .user-visits-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .user-visits-header,
+    .user-visits-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .user-visits-toolbar input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .user-visits-panel {
+        padding: 16px;
+    }
+
+    .user-visit-dialog .detail-grid {
+        grid-template-columns: 1fr;
+    }
+}

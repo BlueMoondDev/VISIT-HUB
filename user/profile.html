@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil | VisitHub</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/user-profile.css">
+</head>
+
+<body class="user-body">
+
+  <aside class="user-sidebar">
+        <a class="user-brand" href="dashboard.html">
+            Visit<span>Hub</span>
+            <small>ÁREA PERSONAL</small>
+        </a>
+
+        <nav class="user-nav">
+            <a class="active" href="dashboard.html">
+                <span>▦</span> Inicio
+            </a>
+
+            <a href="visits.html">
+                <span>▤</span> Mis citas
+            </a>
+
+            <a href="new-visit.html">
+                <span>＋</span> Nueva cita
+            </a>
+
+            <a href="calendar.html">
+                <span>▦</span> Calendario
+            </a>
+
+            <a href="profile.html">
+                <span>♙</span> Mi perfil
+            </a>
+        </nav>
+
+        <div class="user-sidebar-bottom">
+            <span id="user-name">Usuario</span>
+            <button id="logout-button" class="button button-ghost button-full">
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="user-main">
+
+        <header class="profile-header">
+            <div>
+                <span class="eyebrow">ÁREA PERSONAL / MI PERFIL</span>
+                <h1>Mi perfil</h1>
+                <p>Consulta y administra la información de tu cuenta.</p>
+            </div>
+        </header>
+
+        <section class="profile-layout">
+
+            <!-- Información principal -->
+
+            <article class="profile-card profile-main-card">
+
+                <div class="profile-avatar" id="profile-avatar">
+                    U
+                </div>
+
+                <h2 id="profile-display-name">Cargando...</h2>
+                <p id="profile-username">@usuario</p>
+
+                <span class="profile-role">
+                    Usuario de VisitHub
+                </span>
+
+            </article>
+
+            <!-- Datos de la cuenta -->
+
+            <article class="profile-card profile-info-card">
+
+                <div class="profile-section-header">
+                    <div>
+                        <h2>Información personal</h2>
+                        <p>Datos asociados a tu cuenta.</p>
+                    </div>
+                </div>
+
+                <form id="profile-form">
+
+                    <div class="profile-form-grid">
+
+                        <div class="profile-field">
+                            <label for="display-name">
+                                Nombre visible
+                            </label>
+
+                            <input
+                                type="text"
+                                id="display-name"
+                                maxlength="60"
+                                placeholder="Tu nombre visible"
+                                required
+                            >
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="username">
+                                Nombre de usuario
+                            </label>
+
+                            <input
+                                type="text"
+                                id="username"
+                                disabled
+                            >
+
+                            <small>No se puede modificar desde aquí.</small>
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="email">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                disabled
+                            >
+
+                            <small>Correo asociado a tu cuenta.</small>
+                        </div>
+
+                        <div class="profile-field">
+                            <label for="created-at">
+                                Fecha de registro
+                            </label>
+
+                            <input
+                                type="text"
+                                id="created-at"
+                                disabled
+                            >
+                        </div>
+
+                    </div>
+
+                    <div id="profile-message" class="profile-message"></div>
+
+                    <div class="profile-actions">
+                        <button
+                            type="button"
+                            id="reset-profile"
+                            class="button button-ghost"
+                        >
+                            Descartar cambios
+                        </button>
+
+                        <button
+                            type="submit"
+                            id="save-profile"
+                            class="button button-primary"
+                        >
+                            Guardar cambios
+                        </button>
+                    </div>
+
+                </form>
+
+            </article>
+
+        </section>
+
+        <!-- Seguridad -->
+
+        <section class="profile-card profile-security-card">
+
+            <div>
+                <h2>Seguridad de la cuenta</h2>
+                <p>
+                    Mantén protegida tu cuenta de VisitHub.
+                </p>
+            </div>
+
+            <div class="security-info">
+                <span class="security-indicator"></span>
+                <div>
+                    <strong>Cuenta activa</strong>
+                    <p>Tu cuenta está registrada en VisitHub.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="../js/user/profile.js"></script>
+
+</body>
+</html>

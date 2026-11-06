@@ -285,7 +285,9 @@ async function updateVisitStatus(status) {
 }
 
 async function deleteVisit() {
-async function deleteVisit() {
+  console.log('FUNCIÓN DELETEVISIT EJECUTADA');
+  console.log('Solicitud seleccionada:', selectedVisit);
+
   if (!selectedVisit) {
     alert('No hay ninguna solicitud seleccionada.');
     return;
@@ -333,7 +335,6 @@ async function deleteVisit() {
   } finally {
     setActionsDisabled(false);
   }
-}
 }
 
 async function getCurrentAdmin() {

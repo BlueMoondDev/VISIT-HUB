@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis citas | VisitHub</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/user-visits.css">
+</head>
+
+<body class="user-body">
+
+   <aside class="user-sidebar">
+        <a class="user-brand" href="dashboard.html">
+            Visit<span>Hub</span>
+            <small>ÁREA PERSONAL</small>
+        </a>
+
+        <nav class="user-nav">
+            <a class="active" href="dashboard.html">
+                <span>▦</span> Inicio
+            </a>
+
+            <a href="visits.html">
+                <span>▤</span> Mis citas
+            </a>
+
+            <a href="new-visit.html">
+                <span>＋</span> Nueva cita
+            </a>
+
+            <a href="calendar.html">
+                <span>▦</span> Calendario
+            </a>
+
+            <a href="profile.html">
+                <span>♙</span> Mi perfil
+            </a>
+        </nav>
+
+        <div class="user-sidebar-bottom">
+            <span id="user-name">Usuario</span>
+            <button id="logout-button" class="button button-ghost button-full">
+                Cerrar sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="user-main">
+
+        <header class="user-visits-header">
+            <div>
+                <span class="eyebrow">ÁREA PERSONAL / MIS CITAS</span>
+                <h1>Mis citas</h1>
+                <p>Consulta el estado y los detalles de tus solicitudes.</p>
+            </div>
+
+            <a href="new-visit.html" class="button button-primary">
+                + Nueva solicitud
+            </a>
+        </header>
+
+        <section class="user-visits-stats">
+
+            <article class="user-visit-stat">
+                <span>Total de solicitudes</span>
+                <strong id="total-count">—</strong>
+            </article>
+
+            <article class="user-visit-stat">
+                <span>Pendientes</span>
+                <strong id="pending-count">—</strong>
+            </article>
+
+            <article class="user-visit-stat">
+                <span>Aprobadas</span>
+                <strong id="approved-count">—</strong>
+            </article>
+
+            <article class="user-visit-stat">
+                <span>Rechazadas</span>
+                <strong id="rejected-count">—</strong>
+            </article>
+
+        </section>
+
+        <section class="user-visits-panel">
+
+            <div class="user-visits-toolbar">
+                <div>
+                    <h2>Historial de solicitudes</h2>
+                    <p>Aquí encontrarás todas tus citas.</p>
+                </div>
+
+                <input
+                    type="search"
+                    id="search-visits"
+                    placeholder="Buscar una cita..."
+                    aria-label="Buscar citas"
+                >
+            </div>
+
+            <div class="user-visits-filters">
+
+                <button class="filter-button active" data-status="all">
+                    Todas
+                </button>
+
+                <button class="filter-button" data-status="pending">
+                    Pendientes
+                </button>
+
+                <button class="filter-button" data-status="approved">
+                    Aprobadas
+                </button>
+
+                <button class="filter-button" data-status="rejected">
+                    Rechazadas
+                </button>
+
+                <button class="filter-button" data-status="cancelled">
+                    Canceladas
+                </button>
+
+            </div>
+
+            <div id="visits-message" class="user-visits-message">
+                Cargando tus solicitudes...
+            </div>
+
+            <div class="user-visits-table-wrapper">
+
+                <table class="user-visits-table">
+                    <thead>
+                        <tr>
+                            <th>Solicitud</th>
+                            <th>Categoría</th>
+                            <th>Fecha solicitada</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="visits-table-body"></tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Ventana de detalles -->
+
+    <dialog id="visit-dialog" class="user-visit-dialog">
+
+        <div class="dialog-header">
+            <div>
+                <span class="eyebrow">DETALLES DE TU SOLICITUD</span>
+                <h2 id="detail-title">Solicitud</h2>
+            </div>
+
+            <button
+                type="button"
+                id="close-dialog"
+                class="dialog-close"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+        </div>
+
+        <div class="dialog-content">
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <span>Categoría</span>
+                    <strong id="detail-category">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Estado</span>
+                    <strong id="detail-status">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Fecha solicitada</span>
+                    <strong id="detail-date">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Hora solicitada</span>
+                    <strong id="detail-time">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Fecha asignada</span>
+                    <strong id="detail-scheduled-date">—</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Hora asignada</span>
+                    <strong id="detail-scheduled-time">—</strong>
+                </div>
+
+            </div>
+
+            <div class="detail-description">
+                <span>Motivo de la solicitud</span>
+                <p id="detail-reason">—</p>
+            </div>
+
+            <div class="detail-description">
+                <span>Respuesta del administrador</span>
+                <p id="detail-response">Sin respuesta todavía.</p>
+            </div>
+
+        </div>
+
+        <div class="dialog-actions">
+            <button type="button" id="close-detail-button" class="button button-primary">
+                Cerrar
+            </button>
+        </div>
+
+    </dialog>
+
+    <script type="module" src="../js/user/visits.js"></script>
+
+</body>
+</html>
