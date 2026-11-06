@@ -7,6 +7,8 @@ const saveButton = document.getElementById("save-settings");
 const message = document.getElementById("settings-message");
 const logoutButton = document.getElementById("logout-button");
 const adminName = document.getElementById("admin-name");
+const testTelegramButton = document.getElementById("test-telegram");
+const telegramTestMessage = document.getElementById("telegram-test-message");
 
 let currentUser = null;
 
@@ -119,7 +121,47 @@ async function saveSettings() {
         saveButton.disabled = false;
     }
 }
+async function testTelegram() {
+    if (!currentUser) {
+        telegramTestMessage.textContent = "No se ha podido verificar tu sesión.";
+        telegramTestMessage.className = "error";
+        return;
+    }
 
+    testTelegramButton.disabled = true;
+    telegramTestMessage.textContent = "Enviando mensaje de prueba...";
+    telegramTestMessage.className = "";
+
+    try {
+        const { data, error } = await supabase.functions.invoke(
+            "telegram-test",
+            {
+                body: {}
+            }
+        );
+
+        if (error) {
+            console.error("Error al probar Telegram:", error);
+            throw new Error("No se pudo conectar con la función de Telegram.");
+        }
+
+        if (!data?.success) {
+            throw new Error(data?.error || "Telegram no pudo enviar el mensaje.");
+        }
+
+        telegramTestMessage.textContent = "¡Mensaje enviado correctamente! Revisa Telegram.";
+        telegramTestMessage.className = "success";
+
+    } catch (error) {
+        console.error(error);
+        telegramTestMessage.textContent = error.message;
+        telegramTestMessage.className = "error";
+
+    } finally {
+        testTelegramButton.disabled = false;
+    }
+}
+testTelegramButton.addEventListener("click", testTelegram);
 saveButton.addEventListener("click", saveSettings);
 
 logoutButton.addEventListener("click", async () => {
