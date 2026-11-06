@@ -139,7 +139,8 @@ async function createVisit(event) {
     showMessage("");
 
     try {
-        const { error } = await supabase
+        // Guardar solicitud en Supabase
+        const { data: newVisit, error } = await supabase
             .from("visits")
             .insert({
                 user_id: currentUser.id,
@@ -149,15 +150,44 @@ async function createVisit(event) {
                 preferred_date: preferredDate,
                 preferred_time: preferredTime,
                 status: "pending"
-            });
+            })
+            .select("id")
+            .single();
 
         if (error) {
             console.error("Error creando solicitud:", error);
+
             showMessage(
                 "No se ha podido enviar la solicitud: " + error.message,
                 "error"
             );
+
             return;
+        }
+
+        // Avisar al administrador por Discord
+        try {
+            const { data: notification, error: notificationError } =
+                await supabase.functions.invoke("discord-new-visit", {
+                    body: {
+                        visitId: newVisit.id
+                    }
+                });
+
+            if (notificationError || !notification?.success) {
+                console.error(
+                    "La cita se creó, pero no se pudo enviar el aviso de Discord:",
+                    notificationError || notification
+                );
+            } else {
+                console.log("Aviso enviado correctamente a Discord.");
+            }
+
+        } catch (notificationError) {
+            console.error(
+                "Error enviando la notificación de Discord:",
+                notificationError
+            );
         }
 
         // Mostrar confirmación
