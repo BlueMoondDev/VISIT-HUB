@@ -172,7 +172,7 @@ if (registerForm) {
         }
       } else {
         showMessage(
-          'Cuenta creada. Revisa tu correo para confirmar el registro antes de iniciar sesión.',
+          'Cuenta creada. Ya puedes iniciar sesión.',
           'success'
         );
 
