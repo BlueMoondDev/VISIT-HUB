@@ -64,27 +64,32 @@
 
             <div class="settings-grid">
 
-                <article class="settings-card">
-                    <div class="settings-card-icon telegram-icon">✈</div>
+               
+<article class="settings-card">
+    <div class="settings-card-icon discord-icon">◉</div>
 
-                    <h3>Telegram</h3>
-                    <p>
-                        Recibe avisos de nuevas peticiones en un chat,
-                        grupo o canal de Telegram.
-                    </p>
+    <h3>Discord</h3>
+    <p>
+        Recibe avisos administrativos de VisitHub
+        directamente en tus mensajes privados.
+    </p>
 
-                    <label for="telegram-chat-id">Telegram Chat ID</label>
-                    <input
-                        type="text"
-                        id="telegram-chat-id"
-                        placeholder="Ej. 123456789"
-                    >
+    <small>
+        El bot está conectado mediante Supabase
+        y sus credenciales están protegidas.
+    </small>
 
-                    <small>
-                        El token del bot se configurará posteriormente
-                        de forma segura en el servidor.
-                    </small>
-                </article>
+    <button
+        type="button"
+        id="test-discord"
+        class="button button-ghost discord-test-button"
+    >
+        <span>◉</span> Enviar mensaje de prueba
+    </button>
+
+    <p id="discord-test-message" role="status"></p>
+</article>
+
 
                 <article class="settings-card">
                     <div class="settings-card-icon email-icon">✉</div>
@@ -102,19 +107,9 @@
                         placeholder="ejemplo@correo.com"
                     >
 
-                    <small>
-    El token del bot está guardado de forma segura en Supabase.
+<small>
+    Los usuarios recibirán sus notificaciones en su correo electrónico.
 </small>
-
-<button
-    type="button"
-    id="test-telegram"
-    class="button button-ghost telegram-test-button"
->
-    <span>✈</span> Enviar mensaje de prueba
-</button>
-
-<p id="telegram-test-message" role="status"></p>
                 </article>
 
             </div>
