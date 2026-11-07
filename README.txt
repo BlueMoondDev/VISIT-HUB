@@ -18,3 +18,16 @@ IMPORTANTE:
 - Si Supabase tiene activada la confirmación por correo, al registrarte tendrás que confirmar el email antes de iniciar sesión.
 - El login redirige a dashboard.html, que construiremos en la siguiente fase. Por ahora todavía no existe.
 - El trigger de perfiles debe leer los metadatos username y display_name que se envían en el registro.
+
+APARIENCIA Y TEMAS
+------------------
+VisitHub incluye un selector global de apariencia en las barras laterales de las áreas privadas.
+- Modos: claro y oscuro.
+- Colores de acento: azul, lavanda, verde, rosa y turquesa.
+- La selección se guarda en el navegador mediante localStorage y se mantiene al navegar entre páginas.
+
+Archivos añadidos:
+- js/theme.js: aplica y guarda las preferencias de apariencia.
+- css/themes.css: paletas, controles y ajustes del modo oscuro.
+
+No requiere cambios en Supabase ni nuevas columnas en la base de datos. La preferencia se guarda por navegador/dispositivo.

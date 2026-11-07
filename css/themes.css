@@ -1,0 +1,172 @@
+/* VisitHub theme tokens and appearance overrides */
+/* ========================================
+   VISITHUB · SISTEMA GLOBAL DE APARIENCIA
+======================================== */
+:root {
+  --page-background: linear-gradient(125deg, #d9efff 0%, #edf8ff 30%, #c8e7fb 65%, #eaf7ff 100%);
+  --surface-raised: rgba(255, 255, 255, .88);
+  --surface-glass: rgba(248, 251, 255, .78);
+  --surface-input: #ffffff;
+  --text-strong: #26394d;
+  --shadow-soft: 0 14px 38px rgba(67, 111, 151, .12);
+  --shadow-card: 0 10px 28px rgba(67, 111, 151, .09);
+  --focus-ring: 0 0 0 3px rgba(101, 155, 208, .22);
+}
+body { background: var(--page-background); color: var(--text); }
+
+:root[data-color="azul"] { --primary:#659bd0; --primary-dark:#427eb8; --surface-blue:#e2effb; --focus-ring:0 0 0 3px rgba(101,155,208,.24); }
+:root[data-color="lavanda"] { --primary:#9a8bd0; --primary-dark:#7665b2; --surface-blue:#eeeafd; --focus-ring:0 0 0 3px rgba(154,139,208,.25); }
+:root[data-color="verde"] { --primary:#72ad91; --primary-dark:#478568; --surface-blue:#e3f3e9; --focus-ring:0 0 0 3px rgba(114,173,145,.25); }
+:root[data-color="rosa"] { --primary:#d58eae; --primary-dark:#b66b8d; --surface-blue:#faeaf1; --focus-ring:0 0 0 3px rgba(213,142,174,.25); }
+:root[data-color="turquesa"] { --primary:#58aaa9; --primary-dark:#348887; --surface-blue:#e0f4f2; --focus-ring:0 0 0 3px rgba(88,170,169,.25); }
+
+/* Controles compactos integrados en las barras laterales. */
+.theme-controls { width:100%; padding:13px 12px; margin:0 0 12px; border:1px solid var(--border); border-radius:16px; background:var(--surface-glass); box-shadow:var(--shadow-card); }
+.theme-controls-title { display:block; margin:0 0 9px; color:var(--text); font-size:.76rem; font-weight:800; letter-spacing:.04em; }
+.theme-mode-row { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
+.theme-mode-button, .theme-swatch { min-height:34px; border:1px solid var(--border); border-radius:10px; background:var(--surface-raised); color:var(--text); cursor:pointer; font:inherit; font-size:.75rem; transition:background .18s ease,border-color .18s ease,transform .18s ease; }
+.theme-mode-button:hover, .theme-swatch:hover { transform:translateY(-1px); }
+.theme-mode-button.is-active { border-color:var(--primary); background:var(--surface-blue); color:var(--primary-dark); font-weight:800; }
+.theme-palette { display:flex; justify-content:space-between; gap:7px; }
+.theme-swatch { width:27px; min-width:27px; height:27px; min-height:27px; padding:0; border-radius:50%; position:relative; }
+.theme-swatch::after { content:""; position:absolute; inset:5px; border-radius:50%; background:var(--swatch); }
+.theme-swatch.is-active { outline:2px solid var(--primary-dark); outline-offset:2px; }
+.theme-swatch[data-theme-color="azul"] { --swatch:#659bd0; }
+.theme-swatch[data-theme-color="lavanda"] { --swatch:#9a8bd0; }
+.theme-swatch[data-theme-color="verde"] { --swatch:#72ad91; }
+.theme-swatch[data-theme-color="rosa"] { --swatch:#d58eae; }
+.theme-swatch[data-theme-color="turquesa"] { --swatch:#58aaa9; }
+.theme-mode-button:focus-visible, .theme-swatch:focus-visible { outline:3px solid var(--primary); outline-offset:3px; }
+
+/* Dark mode: surfaces, navigation, forms, tables and overlays. */
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --bg:#111b29; --surface:#1b293a; --surface-blue:#263b52;
+  --text:#e7f0fa; --muted:#a8b8ca; --border:#34495f;
+  --surface-raised:rgba(31,46,64,.96); --surface-glass:rgba(25,39,56,.88);
+  --surface-input:#172536; --text-strong:#f0f6fc;
+  --page-background:radial-gradient(ellipse at 12% 8%, rgba(70,123,165,.25), transparent 42%), linear-gradient(135deg,#101a28 0%,#172638 52%,#111d2c 100%);
+  --shadow-soft:0 16px 42px rgba(0,0,0,.28); --shadow-card:0 10px 28px rgba(0,0,0,.2);
+}
+:root[data-theme="dark"] body { color:var(--text); }
+:root[data-theme="dark"] .admin-sidebar,
+:root[data-theme="dark"] .user-sidebar,
+:root[data-theme="dark"] .admin-panel,
+:root[data-theme="dark"] .user-panel,
+:root[data-theme="dark"] .admin-stat,
+:root[data-theme="dark"] .user-stat,
+:root[data-theme="dark"] .settings-card,
+:root[data-theme="dark"] .profile-card,
+:root[data-theme="dark"] .visit-card,
+:root[data-theme="dark"] .calendar-card,
+:root[data-theme="dark"] .hero-panel,
+:root[data-theme="dark"] .modal-content,
+:root[data-theme="dark"] dialog,
+:root[data-theme="dark"] .admin-table-wrap,
+:root[data-theme="dark"] .table-wrap,
+:root[data-theme="dark"] .dashboard-card,
+:root[data-theme="dark"] .stat-card { background:var(--surface-raised); color:var(--text); border-color:var(--border); box-shadow:var(--shadow-card); }
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4,
+:root[data-theme="dark"] strong,
+:root[data-theme="dark"] label,
+:root[data-theme="dark"] .admin-brand,
+:root[data-theme="dark"] .user-brand,
+:root[data-theme="dark"] .admin-nav a,
+:root[data-theme="dark"] .user-nav a { color:var(--text); }
+:root[data-theme="dark"] p,
+:root[data-theme="dark"] small,
+:root[data-theme="dark"] .muted,
+:root[data-theme="dark"] .settings-header p,
+:root[data-theme="dark"] .profile-header p { color:var(--muted); }
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea { background:var(--surface-input); color:var(--text); border-color:var(--border); }
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder { color:#8296ab; }
+:root[data-theme="dark"] table th { background:#24364a; color:#dce8f5; }
+:root[data-theme="dark"] table td,
+:root[data-theme="dark"] table th { border-color:var(--border); }
+:root[data-theme="dark"] tr:hover td { background:rgba(91,137,177,.10); }
+:root[data-theme="dark"] .button-ghost,
+:root[data-theme="dark"] .button-secondary { background:#26394e; color:var(--text); border-color:var(--border); }
+:root[data-theme="dark"] .admin-nav a:hover,
+:root[data-theme="dark"] .user-nav a:hover,
+:root[data-theme="dark"] .admin-nav a.active,
+:root[data-theme="dark"] .user-nav a.active { background:var(--surface-blue); color:var(--primary); }
+:root[data-theme="dark"] .theme-controls { background:rgba(13,25,39,.65); }
+:root[data-theme="dark"] .theme-mode-button,
+:root[data-theme="dark"] .theme-swatch { background:#1c2c3f; color:var(--text); border-color:var(--border); }
+:root[data-theme="dark"] .theme-mode-button.is-active { background:var(--surface-blue); color:var(--primary); border-color:var(--primary); }
+:root[data-theme="dark"] .calendar-day,
+:root[data-theme="dark"] .calendar-cell,
+:root[data-theme="dark"] .day-cell { background:#1a293b; color:var(--text); border-color:var(--border); }
+:root[data-theme="dark"] .calendar-day.today,
+:root[data-theme="dark"] .calendar-cell.today { background:var(--surface-blue); }
+:root[data-theme="dark"] hr { border-color:var(--border); }
+:root[data-theme="dark"] .button-primary { color:#fff; }
+
+@media (max-width:760px) {
+  .theme-controls { padding:10px; }
+  .theme-palette { justify-content:flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-mode-button, .theme-swatch { transition:none; }
+}
+
+/* Ajustes específicos para las estructuras reales de las áreas privadas. */
+:root[data-theme="dark"] .admin-body,
+:root[data-theme="dark"] .user-body { background:var(--page-background); color:var(--text); }
+:root[data-theme="dark"] .admin-sidebar,
+:root[data-theme="dark"] .user-sidebar { background:rgba(20,34,50,.96); border-color:var(--border); }
+:root[data-theme="dark"] .user-nav a,
+:root[data-theme="dark"] .admin-nav a { color:var(--muted); }
+:root[data-theme="dark"] .user-nav a.active,
+:root[data-theme="dark"] .admin-nav a.active,
+:root[data-theme="dark"] .user-nav a:hover,
+:root[data-theme="dark"] .admin-nav a:hover { background:var(--surface-blue); color:var(--primary); }
+:root[data-theme="dark"] .user-brand,
+:root[data-theme="dark"] .user-header h1,
+:root[data-theme="dark"] .admin-topbar h1,
+:root[data-theme="dark"] .settings-header h1,
+:root[data-theme="dark"] .profile-header h1 { color:var(--text); }
+:root[data-theme="dark"] .user-header p,
+:root[data-theme="dark"] .admin-topbar p,
+:root[data-theme="dark"] .user-sidebar-bottom span { color:var(--muted); }
+:root[data-theme="dark"] .admin-stat,
+:root[data-theme="dark"] .admin-panel,
+:root[data-theme="dark"] .settings-card,
+:root[data-theme="dark"] .profile-card,
+:root[data-theme="dark"] .visit-card,
+:root[data-theme="dark"] .calendar-card,
+:root[data-theme="dark"] .user-main article,
+:root[data-theme="dark"] .admin-main article,
+:root[data-theme="dark"] .user-main section[class*="card"],
+:root[data-theme="dark"] .admin-main section[class*="card"] { background:var(--surface-raised); color:var(--text); border-color:var(--border); }
+:root[data-theme="dark"] .user-body .button-primary { background:var(--primary); color:#fff; }
+:root[data-theme="dark"] .user-body .button-primary:hover { background:var(--primary-dark); }
+:root[data-theme="dark"] .user-body .button-ghost { background:#26394e; color:var(--text); border:1px solid var(--border); }
+:root[data-theme="dark"] .user-body .button-ghost:hover { background:var(--surface-blue); color:var(--text); }
+:root[data-theme="dark"] .sidebar-bottom,
+:root[data-theme="dark"] .user-sidebar-bottom { border-color:var(--border); }
+:root[data-theme="dark"] .admin-table td,
+:root[data-theme="dark"] .admin-table th { border-color:var(--border); }
+:root[data-theme="dark"] .admin-table tbody tr:hover { background:rgba(91,137,177,.12); }
+:root[data-theme="dark"] .profile-avatar { background:var(--surface-blue); color:var(--primary); }
+:root[data-theme="dark"] .settings-card input,
+:root[data-theme="dark"] .profile-card input,
+:root[data-theme="dark"] .user-main input,
+:root[data-theme="dark"] .admin-main input,
+:root[data-theme="dark"] .user-main select,
+:root[data-theme="dark"] .admin-main select,
+:root[data-theme="dark"] .user-main textarea,
+:root[data-theme="dark"] .admin-main textarea { background:var(--surface-input); color:var(--text); border-color:var(--border); }
+
+/* Las paletas también colorean los elementos de navegación y acciones de usuario. */
+.user-body .button-primary { background:var(--primary); color:#fff; }
+.user-body .button-primary:hover { background:var(--primary-dark); }
+.user-nav a.active { background:var(--surface-blue); color:var(--primary-dark); }
+.user-nav a:hover { background:var(--surface-blue); color:var(--primary-dark); }
+.user-brand span { color:var(--primary-dark); }

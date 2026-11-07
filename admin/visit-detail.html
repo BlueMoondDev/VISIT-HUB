@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="../css/admin.css">
   <link rel="stylesheet" href="../css/visit-detail.css">
+    <link rel="stylesheet" href="../css/themes.css">
 </head>
 
 <body class="admin-body">
@@ -38,9 +39,27 @@
       <a href="settings.html">
         <span>⚙</span> Configuración
       </a>
+            <a href="../legal.html">
+        <span>ⓘ</span> Información legal
+      </a>
     </nav>
 
-    <div class="sidebar-bottom">
+    
+        <section class="theme-controls" aria-label="Apariencia de VisitHub">
+          <span class="theme-controls-title">Apariencia</span>
+          <div class="theme-mode-row" role="group" aria-label="Modo de color">
+            <button type="button" class="theme-mode-button" data-theme-mode="light" aria-pressed="true">☀ Claro</button>
+            <button type="button" class="theme-mode-button" data-theme-mode="dark" aria-pressed="false">☾ Oscuro</button>
+          </div>
+          <div class="theme-palette" role="group" aria-label="Color de acento">
+            <button type="button" class="theme-swatch" data-theme-color="azul" aria-label="Azul" title="Azul" aria-pressed="true"></button>
+            <button type="button" class="theme-swatch" data-theme-color="lavanda" aria-label="Lavanda" title="Lavanda" aria-pressed="false"></button>
+            <button type="button" class="theme-swatch" data-theme-color="verde" aria-label="Verde" title="Verde" aria-pressed="false"></button>
+            <button type="button" class="theme-swatch" data-theme-color="rosa" aria-label="Rosa" title="Rosa" aria-pressed="false"></button>
+            <button type="button" class="theme-swatch" data-theme-color="turquesa" aria-label="Turquesa" title="Turquesa" aria-pressed="false"></button>
+          </div>
+        </section>
+<div class="sidebar-bottom">
       <span id="admin-name">Administrador</span>
 
       <button id="logout-button" class="button button-ghost button-full">
@@ -235,5 +254,6 @@
 
   <script type="module" src="../js/admin/visit-detail.js"></script>
 
+  <script src="../js/theme.js" defer></script>
 </body>
 </html>

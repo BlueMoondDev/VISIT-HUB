@@ -14,7 +14,13 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); }
+body { margin: 0; min-height: 100vh; background: linear-gradient(
+  125deg,
+  #d9efff 0%,
+  #edf8ff 30%,
+  #c8e7fb 65%,
+  #eaf7ff 100%
+); color: var(--text); }
 a { color: var(--primary-dark); text-decoration: none; }
 a:hover { text-decoration: underline; }
 button, input { font: inherit; }
@@ -95,3 +101,34 @@ button, input { font: inherit; }
   .header-actions .button { min-height: 40px; padding: 0 11px; font-size: .84rem; }
   .hero-actions { align-items: stretch; flex-direction: column; }
 }
+
+/* ========================================
+   ANIMACIONES GLOBALES - VISITHUB
+======================================== */
+
+/* Entrada suave de las páginas */
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicar la entrada al contenido de la página */
+body {
+  animation: pageEntrance 0.55s ease-out both;
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+
