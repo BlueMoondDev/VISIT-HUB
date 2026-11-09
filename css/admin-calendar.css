@@ -324,3 +324,239 @@
     grid-column: auto;
   }
 }
+
+/* ==========================================
+   CALENDARIO PERSONAL - VISITHUB
+========================================== */
+
+/* Botones de la barra del calendario */
+
+.calendar-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Formularios de eventos y categorías */
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.event-form label {
+  color: var(--text-primary, #34445c);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.event-form input,
+.event-form select,
+.event-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color, #dce7f2);
+  border-radius: 12px;
+  background: var(--card-background, #ffffff);
+  color: var(--text-primary, #34445c);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.event-form input:focus,
+.event-form select:focus,
+.event-form textarea:focus {
+  border-color: var(--primary-color, #79aee8);
+  box-shadow: 0 0 0 3px rgba(121, 174, 232, 0.15);
+}
+
+.event-form textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+.event-form input[type="color"] {
+  width: 75px;
+  height: 45px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.event-category-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-category-row select {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.event-time-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Botones de las ventanas */
+
+.event-form .dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#delete-event-button {
+  color: #c85b65;
+}
+
+#delete-event-button[hidden] {
+  display: none;
+}
+
+/* Ventana de categorías */
+
+#category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-color, #dce7f2);
+  border-radius: 12px;
+  background: var(--card-background, #ffffff);
+}
+
+.category-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.category-color-dot {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.category-item-name {
+  color: var(--text-primary, #34445c);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.category-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.category-item-actions button {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #8797aa);
+  padding: 7px;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.category-item-actions button:hover {
+  background: var(--background, #f0f5fa);
+  color: var(--primary-color, #5b9bd5);
+}
+
+.category-empty {
+  color: var(--text-secondary, #8797aa);
+  text-align: center;
+  padding: 18px 10px;
+}
+
+/* Eventos personales en el calendario */
+
+.calendar-event.personal-event {
+  border-left: 3px solid var(--event-color, #79aee8);
+  background: color-mix(in srgb, var(--event-color, #79aee8) 13%, white);
+  color: var(--text-primary, #34445c);
+}
+
+.calendar-event.personal-event:hover {
+  filter: brightness(0.97);
+}
+
+/* Modo oscuro */
+
+[data-theme="dark"] .event-form input,
+[data-theme="dark"] .event-form select,
+[data-theme="dark"] .event-form textarea {
+  background: var(--card-background, #202b3a);
+  color: var(--text-primary, #edf3fa);
+  border-color: var(--border-color, #39485b);
+}
+
+[data-theme="dark"] .category-item {
+  background: var(--card-background, #202b3a);
+  border-color: var(--border-color, #39485b);
+}
+
+[data-theme="dark"] .calendar-event.personal-event {
+  background: color-mix(in srgb, var(--event-color, #79aee8) 24%, #202b3a);
+  color: var(--text-primary, #edf3fa);
+}
+
+/* Adaptación a móviles */
+
+@media (max-width: 600px) {
+  .calendar-toolbar-actions {
+    width: 100%;
+  }
+
+  .calendar-toolbar-actions button {
+    flex: 1;
+  }
+
+  .event-time-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-category-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .event-category-row button {
+    width: 100%;
+  }
+
+  .event-form .dialog-actions {
+    flex-wrap: wrap;
+  }
+
+  .event-form .dialog-actions button {
+    flex: 1;
+  }
+}

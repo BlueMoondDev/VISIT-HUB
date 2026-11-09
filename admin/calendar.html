@@ -75,6 +75,7 @@
       </div>
     </header>
 
+   
     <section class="calendar-toolbar">
       <div class="calendar-month-navigation">
         <button id="previous-month" class="calendar-nav-button"
@@ -86,10 +87,17 @@
           aria-label="Mes siguiente">›</button>
       </div>
 
-      <button id="today-button" class="button button-secondary">
-        Hoy
-      </button>
+      <div class="calendar-toolbar-actions">
+        <button id="today-button" class="button button-secondary">
+          Hoy
+        </button>
+
+        <button id="create-event-button" class="button button-primary">
+          + Crear evento
+        </button>
+      </div>
     </section>
+
 
     <section class="calendar-legend">
       <span><i class="legend-dot pending"></i> Pendiente</span>
@@ -172,6 +180,103 @@
         <span>ⓘ</span> Información legal
       </a>
     </div>
+  </dialog>
+
+  <!-- VENTANA PARA CREAR Y EDITAR EVENTOS PERSONALES -->
+  <dialog id="event-dialog" class="calendar-dialog">
+    <div class="dialog-header">
+      <div>
+        <span class="eyebrow">MI CALENDARIO</span>
+        <h2 id="event-dialog-title">Crear evento</h2>
+      </div>
+
+      <button id="close-event-dialog" class="dialog-close"
+        type="button" aria-label="Cerrar">×</button>
+    </div>
+
+    <form id="event-form" class="event-form">
+      <input type="hidden" id="event-id">
+
+      <label for="event-title">Título del evento</label>
+      <input id="event-title" type="text" maxlength="120"
+        placeholder="Ej. Torneo de Smash" required>
+
+      <label for="event-category">Categoría</label>
+      <div class="event-category-row">
+        <select id="event-category" required>
+          <option value="">Selecciona una categoría</option>
+        </select>
+
+        <button id="manage-categories-button"
+          class="button button-secondary" type="button">
+          Categorías
+        </button>
+      </div>
+
+      <label for="event-date">Fecha</label>
+      <input id="event-date" type="date" required>
+
+      <div class="event-time-grid">
+        <div>
+          <label for="event-start">Hora de inicio</label>
+          <input id="event-start" type="time">
+        </div>
+
+        <div>
+          <label for="event-end">Hora de finalización</label>
+          <input id="event-end" type="time">
+        </div>
+      </div>
+
+      <label for="event-description">Descripción</label>
+      <textarea id="event-description" rows="3"
+        placeholder="Detalles adicionales..."></textarea>
+
+      <p id="event-form-message" class="form-message"
+        role="status" aria-live="polite"></p>
+
+      <div class="dialog-actions">
+        <button id="delete-event-button"
+          class="button button-ghost" type="button" hidden>
+          Eliminar
+        </button>
+
+        <button class="button button-primary" type="submit">
+          Guardar evento
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- VENTANA PARA GESTIONAR CATEGORÍAS -->
+  <dialog id="category-dialog" class="calendar-dialog">
+    <div class="dialog-header">
+      <div>
+        <span class="eyebrow">MI CALENDARIO</span>
+        <h2>Mis categorías</h2>
+      </div>
+
+      <button id="close-category-dialog" class="dialog-close"
+        type="button" aria-label="Cerrar">×</button>
+    </div>
+
+    <form id="category-form" class="event-form">
+      <label for="category-name">Nombre de la categoría</label>
+      <input id="category-name" type="text" maxlength="40"
+        placeholder="Ej. Estudios" required>
+
+      <label for="category-color">Color</label>
+      <input id="category-color" type="color" value="#79AEE8">
+
+      <button class="button button-primary" type="submit">
+        Crear categoría
+      </button>
+
+      <p id="category-message" class="form-message"
+        role="status" aria-live="polite"></p>
+    </form>
+
+    <div id="category-list"></div>
   </dialog>
 
   <script type="module" src="../js/admin/calendar.js"></script>
