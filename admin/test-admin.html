@@ -1,0 +1,44 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de administrador - VisitHub</title>
+</head>
+<body>
+    <h1>Comprobación de administrador</h1>
+    <p id="status">Comprobando sesión...</p>
+
+    <script type="module">
+        import { supabase } from '../js/supabase.js';
+
+        const status = document.getElementById('status');
+
+        async function checkAdmin() {
+            const { data: userData, error: userError } =
+                await supabase.auth.getUser();
+
+            if (userError || !userData.user) {
+                status.textContent = 'No hay una sesión iniciada.';
+                return;
+            }
+
+            const { data, error } =
+                await supabase.rpc('is_admin');
+
+            if (error) {
+                status.textContent = 'Error: ' + error.message;
+                return;
+            }
+
+            status.textContent = data
+                ? '¡Correcto! Tu cuenta es administradora.'
+                : 'La función no reconoce esta cuenta como administradora.';
+        }
+
+        checkAdmin();
+    </script>
+</body>
+</html>
+```
